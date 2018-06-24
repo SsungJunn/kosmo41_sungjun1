@@ -6,23 +6,20 @@ public class Quiz11 {
 		Scanner s = new Scanner(System.in);
 		
 		int num1;
+		int num2 = 1;
 		int mul = 1;
 		
-		System.out.println("입력정수");
+		System.out.print("입력정수 = ");
+		num1 = s.nextInt();
 		
-		
-		//while(i > 0)
-		//{
-			num1 = s.nextInt();
+		while(num2 < num1)
+		{
+			mul = mul * num1;
 			
-			for(int i = num1; i > 0; i--)
-			{
-				System.out.print(i + " * ");
-				mul = mul * i; 
-			}
-			System.out.println(" = " + mul);
-	//	}System.out.println(" = " + mul);
-
+			System.out.print(num1 + " * ");
+			
+			num1--;
+		}
+		System.out.println("1 = " + mul);
 	}
-
 }

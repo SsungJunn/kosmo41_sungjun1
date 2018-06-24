@@ -12,9 +12,7 @@ public class Quiz10 {
 		System.out.println("정수 입력");
 		
 		num1 = s.nextInt();
-		num2 = s.nextInt();
-		
-		
+		num2 = s.nextInt();	
 		
 		if(num1 < num2) 
 		{
@@ -33,5 +31,4 @@ public class Quiz10 {
 				System.out.println("sum = " + sum);
 			}
 		}
-	
 }

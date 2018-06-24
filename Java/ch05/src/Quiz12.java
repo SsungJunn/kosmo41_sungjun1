@@ -1,4 +1,3 @@
-
 public class Quiz12 {
 
 	public static void main(String[] args) {
@@ -13,7 +12,5 @@ public class Quiz12 {
 			
 		}while(i < 1000);
 		System.out.println("sum = " + sum);
-
 	}
-
 }

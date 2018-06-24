@@ -26,9 +26,5 @@ public class Quiz7 {
 			System.out.println("D");
 		else
 			System.out.println("F");
-		
-	
 	}
-
 }
-
