@@ -1,31 +1,72 @@
 import java.util.Random;
 
-public class Quiz15 {
-
-	public static void main(String[] args) {
-
+class MyRandom1
+{
+	void randPrint1()
+	{
 		Random randomV1 = new Random();
 		Random randomV2 = new Random();
 		Random randomV3 = new Random();
-		
+	
 		while(true)
 		{
 			int num1 = (randomV1.nextInt(10));
 			int num2 = (randomV2.nextInt(10));
 			int num3 = (randomV3.nextInt(10));
-			
-			if((num1 != 0) && (num1 != num2))
+		
+			if((num1 != 0) && (num1 != num2) && (num1 != num3) && (num2 != num3))
 			{
-				if((num1 != num3) && (num2 != num3))
-				{
-					System.out.print(num1);
-					System.out.print(num2);
-					System.out.print(num3);
+				System.out.print(num1);
+				System.out.print(num2);
+				System.out.print(num3);
+				System.out.println(""
+						+ "");
+				break;
 				}
-			}break;
+			else 
+			{
+				continue;
+				}
+			}
+		}
+	void randPrint2()
+	{
+	Random randomV1 = new Random();
+	Random randomV2 = new Random();
+	Random randomV3 = new Random();
+
+	while(true)
+	{
+		int num1 = (randomV1.nextInt(10));
+		int num2 = (randomV2.nextInt(10));
+		int num3 = (randomV3.nextInt(10));
+	
+		if((num1 != 0) && (num1 != num2) && (num1 != num3) && (num2 != num3))
+		{
+			System.out.print(num1);
+			System.out.print(num2);
+			System.out.print(num3);
+			break;
+			}
+		else 
+		{
+			continue;
+			}
 		}
 	}
 }
+
+public class Quiz15 {
+
+	public static void main(String[] args)
+	{
+		MyRandom1 rand = new MyRandom1();
+		rand.randPrint1();
+		rand.randPrint2();
+		
+	}
+}
+
 	
 	/*	
 	System.out.println(randomV1.nextBoolean());
