@@ -4,35 +4,53 @@ public class Quiz01 {
 
 	public static void main(String[] args) {
 		
-		int[] ar1 = new int[5];
-		
 		Scanner s = new Scanner(System.in);
-				
-		for(int i = 0 ; i < 5; i++);
-		{
-			System.out.println("숫자를 입력하세요.(100미만)");
-			//ar1[i] = s.nextInt();
-		}
+		
+		int[] arr = new int[5];
 		int nMax = 0;
 		int nMin = 1000;
+		int sum = 0;
 		
-		if(nMax < ar1[0] ) {
-			nMax = ar1[0];
-		}
-		if(nMax < ar1[1] ) {
-			nMax = ar1[1];
-		}
-		if(nMax < ar1[2] ) {
-			nMax = ar1[2];
-		}
-		if(nMax < ar1[3] ) {
-			nMax = ar1[3];
-		}
-		if(nMax < ar1[4] ) {
-			nMax = ar1[4];
-		}
+		for(int i = 0 ; i < arr.length; i++)
+		{	
+			System.out.println("숫자를 입력하세요.(100미만)");
+			arr[i] = s.nextInt();
+			sum = sum + arr[i];
 		
-
+			if(nMax < arr[0] ) {
+				nMax = arr[0];
+			}	
+			if(nMax < arr[1] ) {
+				nMax = arr[1];
+			} 
+			if(nMax < arr[2] ) {
+				nMax = arr[2];
+			} 
+			if(nMax < arr[3] ) {
+				nMax = arr[3];
+			} 
+			if(nMax < arr[4] ) {
+				nMax = arr[4];
+			}
+		}	System.out.println("최대값 = " + nMax + '\n');
+		for(int i = 0; i < arr.length; i++)
+		{
+			if(nMin > arr[0] ) {
+				nMin = arr[0];
+			}	
+			if(nMin > arr[1] ) {
+				nMin = arr[1];
+			} 
+			if(nMin > arr[2] ) {
+				nMin = arr[2];
+			} 
+			if(nMin > arr[3] ) {
+				nMin = arr[3];
+			} 
+			if(nMin > arr[4] ) {
+				nMin = arr[4];
+			}
+		}	System.out.println("최대값 = " + nMin + '\n');
+		System.out.println("합 = " + sum);
 	}
-
 }
