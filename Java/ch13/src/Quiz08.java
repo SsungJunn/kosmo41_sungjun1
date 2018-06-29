@@ -66,7 +66,6 @@ public class Quiz08 {
 				{
 					System.out.println(sum);
 				}
-			
 			}sum = 0;
 			System.out.println();
 		}

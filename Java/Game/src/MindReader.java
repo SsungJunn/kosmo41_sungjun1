@@ -15,27 +15,21 @@ public class MindReader {
 		
 		while(true)
 		{
-			for(int i = 0; i < nMax; i++)
+			System.out.println((nMax + nMin)/2 + "가 맞니?");
+			String word = s.nextLine();
+			//if((nMax+nMin)/2 < nMax || (nMax+nMin)/2 > nMin)
+			if(word.equals("y"))
 			{
-				System.out.println((nMax + nMin)/2 + "가 맞니?");
-				String word = s.next();
-		
-				if((nMax+nMin)/2 < nMax)
-				{
-					if(word == "h")
-					{	
-						
-					}
-					if(word == "l")
-					{	
-						
-					}
-					if(word == "y")
-					{	
-						break;
-					}
-				}
-			}break;
+				break;
+			}
+			if(word.equals("h"))
+			{	
+				nMin = (nMax+nMin)/2;
+			}
+			if(word.equals("l"))
+			{	
+				nMax = (nMax+nMin)/2;
+			}
 		}
-	}
+	}	
 }
