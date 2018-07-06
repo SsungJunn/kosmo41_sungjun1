@@ -6,7 +6,7 @@ public class TicTacToe {
 		String[][] arr = { { "1", "2", "3" }, { "4", "5", "6" }, { "7", "8", "9" } };
 		Scanner s = new Scanner(System.in);
 
-		for (int x = 0; x < 10; x++) {
+		for (int x = 0; x < 9; x++) {
 			for (int i = 0; i < 3; i++) {
 				for (int j = 0; j < 3; j++) {
 					if (j == 1 || j == 2) {
@@ -43,29 +43,13 @@ public class TicTacToe {
 				}
 				System.out.println();
 			}
-			
-			if (arr[0][0] == arr[0][1] && arr[0][1] == arr[0][2]) {
-				System.out.println("Player 1 has wonn");
-				break;
-			} else if (arr[1][0] == arr[1][1] && arr[1][1] == arr[1][2]) {
-				System.out.println("Player 1 has wonn");
-				break;
-			} else if (arr[2][0] == arr[2][1] && arr[2][1] == arr[2][2]) {
-				System.out.println("Player 1 has wonn");
-				break;
-			} else if (arr[0][0] == arr[1][0] && arr[1][0] == arr[2][0]) {
-				System.out.println("Player 1 has wonn");
-				break;
-			} else if (arr[0][1] == arr[1][1] && arr[1][1] == arr[2][1]) {
-				System.out.println("Player 1 has wonn");
-				break;
-			} else if (arr[0][2] == arr[1][2] && arr[1][2] == arr[2][2]) {
-				System.out.println("Player 1 has wonn");
-				break;
-			} else if (arr[0][0] == arr[1][1] && arr[1][1] == arr[2][2]) {
-				System.out.println("Player 1 has wonn");
-				break;
-			} else if (arr[0][2] == arr[1][1] && arr[1][1] == arr[2][0]) {
+			if ((arr[0][0] == arr[0][1] && arr[0][1] == arr[0][2]) || (arr[1][0] == arr[1][1] && arr[1][1] == arr[1][2])
+					|| (arr[2][0] == arr[2][1] && arr[2][1] == arr[2][2])
+					|| (arr[0][0] == arr[1][0] && arr[1][0] == arr[2][0])
+					|| (arr[0][1] == arr[1][1] && arr[1][1] == arr[2][1])
+					|| (arr[0][2] == arr[1][2] && arr[1][2] == arr[2][2])
+					|| (arr[0][0] == arr[1][1] && arr[1][1] == arr[2][2])
+					|| (arr[0][2] == arr[1][1] && arr[1][1] == arr[2][0])) {
 				System.out.println("Player 1 has wonn");
 				break;
 			}
@@ -82,43 +66,19 @@ public class TicTacToe {
 					}
 				}
 			}
-			
-			if (arr[0][0] == arr[0][1] && arr[0][1] == arr[0][2]) {
-				System.out.println("Player 2 has wonn");
-				break;
-			} else if (arr[1][0] == arr[1][1] && arr[1][1] == arr[1][2]) {
-				System.out.println("Player 2 has wonn");
-				break;
-			} else if (arr[2][0] == arr[2][1] && arr[2][1] == arr[2][2]) {
-				System.out.println("Player 2 has wonn");
-				break;
-			} else if (arr[0][0] == arr[1][0] && arr[1][0] == arr[2][0]) {
-				System.out.println("Player 2 has wonn");
-				break;
-			} else if (arr[0][1] == arr[1][1] && arr[1][1] == arr[2][1]) {
-				System.out.println("Player 2 has wonn");
-				break;
-			} else if (arr[0][2] == arr[1][2] && arr[1][2] == arr[2][2]) {
-				System.out.println("Player 2 has wonn");
-				break;
-			} else if (arr[0][0] == arr[1][1] && arr[1][1] == arr[2][2]) {
-				System.out.println("Player 2 has wonn");
-				break;
-			} else if (arr[0][2] == arr[1][1] && arr[1][1] == arr[2][0]) {
+
+			if ((arr[0][0] == arr[0][1] && arr[0][1] == arr[0][2]) || (arr[1][0] == arr[1][1] && arr[1][1] == arr[1][2])
+					|| (arr[2][0] == arr[2][1] && arr[2][1] == arr[2][2])
+					|| (arr[0][0] == arr[1][0] && arr[1][0] == arr[2][0])
+					|| (arr[0][1] == arr[1][1] && arr[1][1] == arr[2][1])
+					|| (arr[0][2] == arr[1][2] && arr[1][2] == arr[2][2])
+					|| (arr[0][0] == arr[1][1] && arr[1][1] == arr[2][2])
+					|| (arr[0][2] == arr[1][1] && arr[1][1] == arr[2][0])) {
 				System.out.println("Player 2 has wonn");
 				break;
 			}
 		}
+		System.out.println("Drown!!");
+		System.out.println("게임종료!!");
 	}
 }
-
-// for문 비교
-// for (int i = 0; i < 3; i++) {
-//	 for (int j = 0; j < 1; j++) {
-//		 if(arr[i][j].equals(arr[i][j+1].equals(arr[i][j+2])))
-//		 {
-//	 		 System.out.println("1 win");
-//	 		 break;
-//	  	 }
-//	 }
-//}
