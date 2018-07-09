@@ -108,13 +108,15 @@ public class Puzzle3by3 {
 			}
 			if(num.equals("k"))
 			{
-				System.out.println("게임끝");
+				System.out.println("게임을 종료합니다.");
+				System.out.println("Good Bye~");
 				break;
 			}
 			
 			if(arr2.equals(arr))
 			{
-				System.out.println("게임끝");
+				System.out.println("정답입니다. 게임을 종료합니다.");
+				System.out.println("Good Bye~");
 				break;
 			}
 			
