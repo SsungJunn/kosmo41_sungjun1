@@ -1,1 +1,2 @@
-AZ
+One Simple String
+Two Simple String
