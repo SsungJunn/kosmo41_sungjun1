@@ -1,4 +1,4 @@
-package com.study.pattern03.stretegy2;
+package com.study.pattern02.stretegy2;
 
 public class GameCharacter {
 	

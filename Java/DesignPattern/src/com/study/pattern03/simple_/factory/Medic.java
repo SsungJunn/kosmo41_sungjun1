@@ -1,4 +1,4 @@
-package com.study.pattern.factory1;
+package com.study.pattern03.simple_.factory;
 
 public class Medic implements Unit {
 

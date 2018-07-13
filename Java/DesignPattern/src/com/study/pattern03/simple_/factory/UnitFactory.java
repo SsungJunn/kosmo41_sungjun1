@@ -1,4 +1,4 @@
-package com.study.pattern.factory1;
+package com.study.pattern03.simple_.factory;
 
 enum UnitType {
 	Marine, Firebat, Medic

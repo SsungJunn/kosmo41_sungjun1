@@ -1,4 +1,4 @@
-package com.study.pattern04.stretegy3;
+package com.study.pattern02.stretegy3;
 
 public abstract class Database {
 	

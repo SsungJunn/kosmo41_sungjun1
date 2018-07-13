@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class MultiClient5 {
 
 	public static void main(String[] args) throws UnknownHostException, IOException {
-		System.out.println("이름을 입력해 주세요.");
+		System.out.println("이름을 입력해 주세요.(무조건 한글자)");
 		Scanner s = new Scanner(System.in);
 		String s_name = s.nextLine();
 
