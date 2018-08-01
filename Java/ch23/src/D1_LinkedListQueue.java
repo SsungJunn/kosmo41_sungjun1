@@ -1,5 +1,5 @@
 //
-// Å¥ÀÇ ±¸Çö
+// íì˜ êµ¬í˜„
 //
 
 import java.util.LinkedList;
@@ -8,27 +8,27 @@ import java.util.Queue;
 public class D1_LinkedListQueue {
 
 	public static void main(String[] args) {
-		Queue<String> que = new LinkedList<>();	// LinkedList<E> ÀÎ½ºÅÏ½º »ı¼º!
+		Queue<String> que = new LinkedList<>();	// LinkedList<E> ï¿½Î½ï¿½ï¿½Ï½ï¿½ ï¿½ï¿½ï¿½ï¿½!
 		que.offer("Box");
 		que.offer("Toy");
 		que.offer("Robot");
 		
-		// ¹«¾ùÀÌ ´ÙÀ½¿¡ ³ª¿ÃÁö È®ÀÎ
+		// ë¬´ì—‡ì´ ë‹¤ìŒì— ë‚˜ì˜¬ì§€ í™•ì¸
 		System.out.println("next: " + que.peek());
 		
-		// Ã¹ ¹øÂ°, µÎ ¹øÂ° ÀÎ½ºÅÏ½º ²¨³»±â
+		// ì²« ë²ˆì§¸, ë‘ ë²ˆì§¸ ì¸ìŠ¤í„´ìŠ¤ êº¼ë‚´ê¸°
 		System.out.println(que.poll());
 		System.out.println(que.poll());
 		
-		// ¹«¾ùÀÌ ´ÙÀ½¿¡ ³ª¿ÃÁö È®ÀÎ
+		// ë¬´ì—‡ì´ ë‹¤ìŒì— ë‚˜ì˜¬ì§€ í™•ì¸
 		System.out.println("next: " + que.peek());
 		
-		// ¸¶Áö¸· ÀÎ½ºÅÏ½º °Å³»±â
+		// ë§ˆì§€ë§‰ ì¸ìŠ¤í„´ìŠ¤ êº¼ë‚´ê¸°
 		System.out.println(que.poll());
-		System.out.println(que.poll()); // ²¨³¾ ´ë»óÀÌ ¾øÀ¸¸é null·Î ¹İÈ¯
+		System.out.println(que.poll()); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ nullï¿½ï¿½ ï¿½ï¿½È¯
 		
-		System.out.println("next: " + que.peek()); // È®ÀÎ ÇÒ ´ë»óÀÌ ¾øÀ¸¸é null·Î ¹İÈ¯
+		System.out.println("next: " + que.peek()); // È®ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ nullï¿½ï¿½ ï¿½ï¿½È¯
 	}
 }
-// LinkdList<E>´Â List<E>¿Í µ¿½Ã¿¡ Queue<E>¸¦ ±¸ÇöÇÏ´Â ÄÃ·º¼Ç Å¬·¡½ºÀÌ´Ù.
-// µû¶ó¼­ ¾î¶°ÇÑ Å¸ÀÔÀÇ ÂüÁ¶º¯¼ö·Î ÂüÁ¶ÇÏ´À³Ä¿¡ µû¶ó '¸®½ºÆ®'·Îµµ 'Å¥'·Îµµ µ¿ÀÛÇÑ´Ù.
+// LinkedList<E>ëŠ” List<E>ì™€ ë™ì‹œì— Queue<E>ë¥¼ êµ¬í˜„í•˜ëŠ” ì»¬ë ‰ì…˜ í´ë˜ìŠ¤ì´ë‹¤.
+// ì–´ë– í•œ íƒ€ì…ì˜ ì°¸ì¡°ë³€ìˆ˜ë¡œ ì°¸ì¡°í•˜ëŠëƒì— ë”°ë¼ 'ë¦¬ìŠ¤íŠ¸'ë¡œë„ 'í'ë¡œë„ ë™ì‘í•œë‹¤.

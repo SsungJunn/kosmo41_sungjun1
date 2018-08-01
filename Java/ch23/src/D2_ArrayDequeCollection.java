@@ -1,5 +1,5 @@
 //
-// ½ºÅÃÀÇ Ex
+// ìŠ¤íƒì˜  Ex
 //
 
 import java.util.ArrayDeque;
@@ -8,38 +8,37 @@ import java.util.Deque;
 public class D2_ArrayDequeCollection {
 
 	public static void main(String[] args) {
-		// µÑ´Ù »ç¿ë°¡´É
 		// Deque<String> deq = new LinkedList<>();
 		Deque<String> deq = new ArrayDeque<>();
 		
-		// ¾ÕÀ¸·Î ³Ö°í
+		// ì•ìœ¼ë¡œ ë„£ê³ 
 		deq.offerFirst("1.Box");
 		deq.offerFirst("2.Toy");
 		deq.offerFirst("3.Robot");
 		
-		// ¾ÕÀ¸·Î ²¨³»±â
+		// ì•ì—ì„œ êº¼ë‚´ê¸°
 		System.out.println(deq.pollFirst());
 		System.out.println(deq.pollFirst());
 		System.out.println(deq.pollFirst());
 		System.out.println();
 		
-		// µÚ·Î ³Ö°í
+		// ë’¤ë¡œ ë„£ê³ 
 		deq.offerLast("1.Box");
 		deq.offerLast("2.Toy");
 		deq.offerLast("3.Robot");
 		
-		// µÚ·Î ²¨³»±â
+		// ë’¤ì—ì„œ êº¼ë‚´ê¸°
 		System.out.println(deq.pollLast());
 		System.out.println(deq.pollLast());
 		System.out.println(deq.pollLast());
 		System.out.println();
 		
-		// µÚ·Î ³Ö°í
+		// ë’¤ë¡œ ë„£ê³ 
 		deq.offerLast("1.Box");
 		deq.offerLast("2.Toy");
 		deq.offerLast("3.Robot");
 		
-		// ¾ÕÀ¸·Î ²¨³»±â
+		// ì•ì—ì„œ êº¼ë‚´ê¸°
 		System.out.println(deq.pollFirst());
 		System.out.println(deq.pollFirst());
 		System.out.println(deq.pollFirst());

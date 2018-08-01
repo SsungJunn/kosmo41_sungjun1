@@ -27,5 +27,4 @@ public class NetworkEx5 {
 			e.printStackTrace();
 		}
 	}
-
 }

@@ -1,14 +1,15 @@
 //
-// í´ë˜ìŠ¤ ë³€ìˆ˜ ì ‘ê·¼ì˜ ì˜ˆ
+// Å¬·¡½º º¯¼ö Á¢±ÙÀÇ ¿¹
 //
 
 
 class AccessWay {
 	static int num = 0;
 	
-	AccessWay() { incrCnt(); }
+	AccessWay() {incrCnt();}
 	void incrCnt() {
-		// í´ë˜ìŠ¤ ë‚´ë¶€ì—ì„œ ì´ë¦„ì„ í†µí•œ ì ‘ê·¼
+		// Å¬·¡½º ³»ºÎ¿¡¼­ ÀÌ¸§À» ÅëÇÑ Á¢±Ù
+		System.out.println(num);
 		num++;
 		
 	}
@@ -18,12 +19,13 @@ class A2_ClassVarAccess {
 
 	public static void main(String[] args) {
 
-		// ì¸ìŠ¤í„´ìŠ¤ì˜ ì´ë¦„ì„ í†µí•œ ì ‘ê·¼
+		// ¿ÜºÎ¿¡¼­ ÀÎ½ºÅÏ½ºÀÇ ÀÌ¸§À» ÅëÇÑ Á¢±Ù
 		AccessWay way = new AccessWay();
+		System.out.println(way.num);
 		way.num++;
 		System.out.println("num = " + way.num);
 		
-		// í´ë˜ìŠ¤ì˜ ì´ë¦„ì„ í†µí•œ ì ‘ê·¼
+		// ¿ÜºÎ¿¡¼­ Å¬·¡½ºÀÇ ÀÌ¸§À» ÅëÇÑ Á¢±Ù
 		AccessWay.num++;
 		System.out.println("num = " + AccessWay.num);
 	}

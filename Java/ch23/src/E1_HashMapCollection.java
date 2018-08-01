@@ -1,6 +1,6 @@
 //
-// Key-Value ¹æ½ÄÀÇ µ¥ÀÌÅÍ ÀúÀå°ú HashMap<K, V> Å¬·¡½º
-// Hash¸¦ ÅëÇØ º¸´Ù ºü¸£°í È¿À²ÀûÀ¸·Î Value°ªÀ» Ã£¾ÆÁØ´Ù.
+// Key-Value ë°©ì‹ì˜ ë°ì´í„° ì €ì¥ê³¼ HashMap<K, V> í´ë˜ìŠ¤
+// Hashï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Valueï¿½ï¿½ï¿½ï¿½ Ã£ï¿½ï¿½ï¿½Ø´ï¿½.
 //
 
 import java.util.HashMap;
@@ -10,21 +10,21 @@ public class E1_HashMapCollection {
 	public static void main(String[] args) {
 		HashMap<Integer, String> map = new HashMap<>();
 		
-		// Key-Value ±â¹İ µ¥ÀÌÅÍ ÀúÀå
+		// Key-Value ê¸°ë°˜ ë°ì´í„° ì €ì¥
 		map.put(45, "Brown");
 		map.put(37, "James");
 		map.put(23, "Martin");
 		
 		
-		// µ¥ÀÌÅÍ Å½»ö
-		System.out.println("23¹ø: " + map.get(23));
-		System.out.println("37¹ø: " + map.get(37));
-		System.out.println("45¹ø: " + map.get(45));
+		// ë°ì´í„° íƒìƒ‰
+		System.out.println("23ï¿½ï¿½: " + map.get(23));
+		System.out.println("37ï¿½ï¿½: " + map.get(37));
+		System.out.println("45ï¿½ï¿½: " + map.get(45));
 		
-		// µ¥ÀÌÅÍ »èÁ¦
+		// ë°ì´í„° ì‚­ì œ
 		map.remove(37);
 		
-		// µ¥ÀÌÅÍ »èÁ¦ È®ÀÎ
-		System.out.println("37¹ø: " + map.get(37));
+		// ë°ì´í„° ì‚­ì œ í™•ì¸
+		System.out.println("37ï¿½ï¿½: " + map.get(37));
 	}
 }

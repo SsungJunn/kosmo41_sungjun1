@@ -98,9 +98,11 @@ public class MultiServer6 {
 
 		public void ShowTalk(String s, String name) {
 
+			
 			int nTmp1 = s.indexOf(" ");
 			String strTmp = s.substring(nTmp1+1);
 			nTmp1 = strTmp.indexOf(" ");
+			strTmp = strTmp.substring(nTmp1+1);
 			
 			int nTmp2 = s.indexOf(" ");
 			String strTmp2 = s.substring(nTmp2, nTmp2+2);
@@ -109,14 +111,6 @@ public class MultiServer6 {
 			
 			PrintWriter pr = clientMap.get(strTmp2);
 			pr.println(name + "(귓속말)" + strTmp);
-		}
-
-		public void ShowTalkTalk(String s, String name) {
-			while(true)
-			{
-				
-				break;
-			}
 		}
 		
 		// 쓰레드를 사용하기 위해서 run()메서드 재정의
@@ -144,17 +138,13 @@ public class MultiServer6 {
 					if (s.equals(name + "=>" + "/list")) {
 						ShowName(name);
 					}
-					
-					if(s.equals("/to" +" "+ name))
-					{		
-						ShowTalkTalk(s, name);
-					}
 
 					if (s.equals("q") || s.equals("Q")) {
 						break;
 					}
 					
 					if (s.indexOf("/to") >= 0) {
+						System.out.println("11111");
 						ShowTalk(s, name);
 					} else {
 						sendAllMsg(s);

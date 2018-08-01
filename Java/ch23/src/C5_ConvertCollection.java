@@ -1,5 +1,5 @@
 //
-// Áßº¹µÈ ÀÎ½ºÅÏ½ºÀÇ »èÁ¦!
+// ì¤‘ë³µëœ ì¸ìŠ¤í„´ìŠ¤ì˜ ì‚­ì œ!
 //
 
 import java.util.ArrayList;
@@ -9,7 +9,7 @@ import java.util.List;
 
 public class C5_ConvertCollection {
 
-	public static void main(String[] args) { // Áßº¹À» Çã¿ëÇÏ´Â ¸®½ºÆ®
+	public static void main(String[] args) { // ì¤‘ë³µì„ í—ˆìš©í•˜ëŠ” ë¦¬ìŠ¤íŠ¸
 		List<String> lst = Arrays.asList("Box", "Toy", "Box", "Toy");
 		ArrayList<String> list = new ArrayList<>(lst);
 		
@@ -17,11 +17,10 @@ public class C5_ConvertCollection {
 			System.out.print(s.toString() + '\t');
 		System.out.println();
 		
-		// Áßº¹µÈ ÀÎ½ºÅÏ½º¸¦ °É·¯ ³»±â À§ÇÑ ÀÛ¾÷
+		// ì¤‘ë³µëœ ì¸ìŠ¤í„´ìŠ¤ë¥¼ ê±¸ëŸ¬ ë‚´ê¸° ìœ„í•œ ì‘ì—…
 		HashSet<String> set = new HashSet<>(list);
-		// ´Ù¸¥ ÄÃ·º¼Ç ÀÎ½ºÅÏ½º·ÎºÎÅÍ HashSet<E> ÀÎ½ºÅÏ½º »ı¼º
 		
-		// ¿ø·¡´ë·Î ArryList<String> ÀÎ½ºÅÏ½º·Î ÀúÀå¹°À» ¿Å±ä´Ù.
+		// ì›ë˜ëŒ€ë¡œ ArrayList<String> ì¸ìŠ¤í„´ìŠ¤ë¡œ ì €ì¥ë¬¼ì„ ì˜®ê¸´ë‹¤.
 		list = new ArrayList<>(set);
 		
 		for(String s : list)

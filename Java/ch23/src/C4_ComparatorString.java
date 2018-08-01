@@ -1,5 +1,7 @@
 //
-// Comparator<T> ÀÎÅÍÆäÀÌ½º ±â¹İ TreeSet<E>ÀÇ Ex2
+// Comparator<T> ì¸í„°í˜ì´ìŠ¤ ê¸°ë°˜ TreeSet<E>ì˜ ì˜ˆ
+// String í´ë˜ìŠ¤ì˜ ì •ë ¬ ê¸°ì¤€ì€ ì‚¬ì „ í¸ì°¬ìˆœì´ë‹¤.
+// ì´ë¥¼ ê¸¸ì´ ìˆœìœ¼ë¡œ ë°”ê¾¸ëŠ” ë¬¸ì¥
 //
 
 import java.util.Comparator;
@@ -7,7 +9,6 @@ import java.util.TreeSet;
 
 class StringComparator implements Comparator<String> {
 	public int compare(String s1, String s2) {
-		// ±æÀÌ°¡ µ¿ÀÏÇÑ µ¥ÀÌÅÍ´Â Ãß°¡µÇÁö ¾Ê´Â´Ù.
 		return s1.length() - s2.length();
 	}
 }
