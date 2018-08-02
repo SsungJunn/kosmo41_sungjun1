@@ -32,23 +32,6 @@ public class ChatSender extends Thread {
 				try {
 					String s2 = s.nextLine();
 					
-					// 귓속말 고정 됬다 시부렐 또 안되네///;;; 당황스럽게
-					if(s2.length()>3&&s2.substring(0, 3).equals("/to"))
-					{
-						out.println(s2);
-						String t[] = s2.split(" ");
-						String name = t[1];
-						while(true)
-						{
-							String tt = s.nextLine();
-							if(tt.equals("//to"))
-							{
-								break;
-							}
-							out.println("/to" + " " + name + " " + tt);
-						}
-					}
-					
 					if (s2.equals("q") || s2.equals("Q")) {
 						out.println(s2);
 						break;
