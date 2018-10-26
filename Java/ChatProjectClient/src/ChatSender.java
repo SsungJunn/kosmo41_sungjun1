@@ -8,24 +8,24 @@ public class ChatSender extends Thread {
 	PrintWriter out = null;
 	String name;
 
-	// »ı¼ºÀÚ
+	// ìƒì„±ì
 	public ChatSender(Socket socket, String name) {
 		this.socket = socket;
 		try {
 			out = new PrintWriter(this.socket.getOutputStream(), true);
 			this.name = name;
 		} catch (Exception e) {
-			System.out.println("¿¹¿ÜS3:" + e);
+			System.out.println("ì˜ˆì™¸S3:" + e);
 		}
 	}
 
-	// run()¸Ş¼Òµå ÀçÁ¤ÀÇ
+	// run()ë©”ì†Œë“œ ì¬ì •ì˜
 	@Override
 	public void run() {
 
 		Scanner s = new Scanner(System.in);
 		try {
-			// ¼­¹ö¿¡ ÀÔ·ÂÇÑ »ç¿ëÀÚÀÌ¸§À» º¸³»ÁØ´Ù.
+			// ì„œë²„ì— ì…ë ¥í•œ ì‚¬ìš©ìì´ë¦„ì„ ë³´ë‚´ì¤€ë‹¤.
 			out.println(name);
 
 			while (out != null) {
@@ -40,7 +40,7 @@ public class ChatSender extends Thread {
 					}
 
 				} catch (Exception e) {
-					System.out.println("¿¹¿ÜS1:" + e);
+					System.out.println("ì˜ˆì™¸S1:" + e);
 				}
 			}
 			
@@ -49,7 +49,7 @@ public class ChatSender extends Thread {
 			socket.close();
 
 		} catch (Exception e) {
-			System.out.println("¿¹¿Ü2:" + e);
+			System.out.println("ì˜ˆì™¸2:" + e);
 		}
 	}
 }

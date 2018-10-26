@@ -3,28 +3,28 @@ import java.io.InputStreamReader;
 import java.net.Socket;
 import java.util.Scanner;
 
-// ¼­¹ö·Î ¸Ş½ÃÁö¸¦ Àü¼ÛÇÏ´Â Å¬·¡½º
+// ì„œë²„ë¡œ ë©”ì‹œì§€ë¥¼ ì „ì†¡í•˜ëŠ” í´ë˜ìŠ¤
 public class ChatReceiver extends Thread {
 	//Scanner s = new Scanner(System.in);
 	
 	Socket socket;
 	BufferedReader in = null;
 	
-	// SocketÀ» ¸Å°³º¯¼ö·Î ¹Ş´Â »ı¼ºÀÚ
+	// Socketì„ ë§¤ê°œë³€ìˆ˜ë¡œ ë°›ëŠ” ìƒì„±ì
 	public ChatReceiver(Socket socket)
 	{
 		this.socket = socket;
 		
 		try {
-			// Á¢¼ÓÇÑ Client·ÎºÎÅÍ µ¥ÀÌÅÍ¸¦ ÀĞ¾îµéÀÌ±â À§ÇÑ BufferedReader »ı¼º
+			// ì ‘ì†í•œ clientë¡œë¶€í„° ë°ì´í„°ë¥¼ ì½ì–´ë“¤ì´ê¸° ìœ„í•œ BufferedReader ìƒì„±
 			in = new BufferedReader(new InputStreamReader(
 					this.socket.getInputStream()));			
 		} catch (Exception e) {
-			System.out.println("¿¹¿Ü1:"+e);
+			System.out.println("ï¿½ï¿½ï¿½ï¿½1:"+e);
 		}
 	}
 	
-	// run()¸Ş¼Òµå ÀçÁ¤ÀÇ
+	// run()ë©”ì†Œë“œ ì¬ì •ì˜
 	@Override
 	public void run() {
 		while (in!=null) {
@@ -33,15 +33,15 @@ public class ChatReceiver extends Thread {
 			} catch (java.net.SocketException ne) {
 				break;
 			} catch (Exception e) {
-				System.out.println("¿¹¿Ü2:"+e);
-				//Á¢¼Ó²÷±â??
-				//Å¬¶óÀÌ¾ğÆ®.RemoveClient(this.name)
+				System.out.println("ì˜ˆì™¸2:"+e);
+				//ì ‘ì†ëŠê¸°??
+				//í´ë¼ì´ì–¸íŠ¸.RemoveClient(this.name)
 			}
 		}
 		try {
 			in.close();
 		} catch (Exception e) {
-			System.out.println("¿¹¿Ü3:"+e);
+			System.out.println("ì˜ˆì™¸3:"+e);
 		}
 	}
 

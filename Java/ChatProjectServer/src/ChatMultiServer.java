@@ -26,39 +26,39 @@ public class ChatMultiServer {
 		}
 	}
 
-	ServerSocket serverSocket = null; // Client Á¢¼ÓÀ» ¹Ş±â À§ÇÑ ServerSocket
-	Socket socket = null; // Á¢¼ÓÇÑ Client¿Í Åë½ÅÇÏ±â À§ÇÑ Socket
+	ServerSocket serverSocket = null; // Client ì ‘ì†ì„ ë°›ê¸° ìœ„í•œ ServerSocket
+	Socket socket = null; // ì ‘ì†í•œ Clientì™€ í†µì‹ í•˜ê¸° ìœ„í•œ Socket
 	Map<String, PrintWriter> clientMap;
 	Map<String, PrintWriter> clientMap2;
 
-	// »ı¼ºÀÚ
+	// ìƒì„±ì
 	public ChatMultiServer() {
-		// Å¬¶óÀÌ¾ğÆ®ÀÇ Ãâ·Â½ºÆ®¸²À» ÀúÀåÇÒ ÇØ½¬¸Ê »ı¼º.
+		// í´ë¼ì´ì–¸íŠ¸ì˜ ì¶œë ¥ìŠ¤íŠ¸ë¦¼ì„ ì €ì¥í•  í•´ì‰¬ë§µ ìƒì„±.
 		clientMap = new HashMap<String, PrintWriter>();
 
-		// ¹æ¸¸µé°í ¹Ş±âÀ§ÇØ¼­ ¼öÁ¤ÇÑ°Å
+		// ë°©ë§Œë“¤ê³  ë°›ê¸°ìœ„í•´ì„œ ìˆ˜ì •í•œê±°
 		clientMap2 = new HashMap<String, PrintWriter>();
 
-		// ÇØ½¬¸Ê µ¿±âÈ­ ¼³Á¤
+		// í•´ì‰¬ë§µ ë™ê¸°í™” ì„¤ì •
 		Collections.synchronizedMap(clientMap);
 
-		// ¹æ¸¸µé°í ¹Ş±âÀ§ÇØ¼­ ¼öÁ¤ÇÑ°Å
+		// ë°©ë§Œë“¤ê³  ë°›ê¸°ìœ„í•´ì„œ ìˆ˜ì •í•œê±°
 		Collections.synchronizedMap(clientMap2);
 	}
 
 	public void init() {
 		try {
-			// ¼­¹ö ¼ÒÄÏ °´Ã¼ »ı¼º
-			serverSocket = new ServerSocket(9999); // 9999Æ÷Æ®·Î ¼­¹ö¼ÒÄÏ °´Ã¼ »ı¼º
-			System.out.println("¼­¹ö°¡ ½ÃÀÛµÇ¾ú½À´Ï´Ù.");
+			// ì„œë²„ ì†Œì¼“ ê°ì²´ ìƒì„±
+			serverSocket = new ServerSocket(9999); // 9999í¬íŠ¸ë¡œ ì„œë²„ì†Œì¼“ ê°ì²´ ìƒì„±
+			System.out.println("ì„œë²„ê°€ ì‹œì‘ë˜ì—ˆìŠµë‹ˆë‹¤.");
 
 			while (true) {
 
 				socket = serverSocket.accept();
 				System.out.println(socket.getInetAddress() + ":" + socket.getPort());
 
-				Thread msr = new MultiServerT(socket); // ¾²·¹µå »ı¼º
-				msr.start(); // ¾²·¹µå ½Ãµ¿.
+				Thread msr = new MultiServerT(socket); // ì“°ë ˆë“œ ìƒì„±
+				msr.start(); // ì“°ë ˆë“œ ì‹œë™
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -70,20 +70,20 @@ public class ChatMultiServer {
 		}
 	}
 
-	// public synchronized void RemoveClient(String name) //Ã¤ÆÃ¹æ »ç¿ëÀÚ Á¦°Å ¹× Ã¤ÆÃ¹æ¿¡ Á¸ÀçÇÏ´Â
-	// Client¿¡°Ô ÅğÀå ¼Ò½ÄÀ» ¾Ë¸²
+	// public synchronized void RemoveClient(String name) // ì±„íŒ…ë°© ì‚¬ìš©ì ì œê±° ë° ì±„íŒ…ë°©ì— ì¡´ì¬í•˜ëŠ” 
+	// Clientì—ê²Œ í‡´ì¥ ì†Œì‹ì„ ì•Œë¦¼
 	// {
 	// try {
 	// clientmap.remove(name);
-	// sendMsg(name + " ÅğÀåÇÏ¼Ì½À´Ï´Ù.", "Server");
+	// sendMsg(name + " í‡´ì¥í•˜ì…¨ìŠµë‹ˆë‹¤.", "Server");
 	// }catch(Exception e) {}
 	// }
-	// Ã¤ÆÃ¹æ ÅğÀå ÀÌ°É·Î °­ÅğÇÒ¼öÀÖÁö¾ÊÀ»±î?
+	// ì±„íŒ…ë°© í‡´ì¥ ì´ê±¸ë¡œ ê°•í‡´í• ìˆ˜ìˆì§€ ì•Šì„ê¹Œ?
 
-	// ¹æ¿¡ ÀÖ´Â ¸ğµç Å¬¶óÀÌ¾ğµåÆ²¿¡°Ô ¸Ş½ÃÁö¸¦ Àü´Ş.
+	// ë°©ì— ìˆëŠ” ëª¨ë“  í´ë¼ì´ì–¸íŠ¸ë“¤ì—ê²Œ ë©”ì‹œì§€ë¥¼ ì „ë‹¬
 	public void sendSomeMsg(String msg) {
 
-		// Ãâ·Â½ºÆ®¸²À» ¼øÂ÷ÀûÀ¸·Î ¾ò¾î¿Í¼­ ÇØ´ç ¸Ş½ÃÁö¸¦ Ãâ·ÂÇÑ´Ù.
+		// ì¶œë ¥ìŠ¤íŠ¸ë¦¼ì„ ìˆœì°¨ì ìœ¼ë¡œ ì–»ì–´ì™€ì„œ í•´ë‹¹ ë©”ì‹œì§€ë¥¼ ì¶œë ¥í•œë‹¤.
 		Iterator it = clientMap2.keySet().iterator();
 
 		while (it.hasNext()) {
@@ -92,14 +92,14 @@ public class ChatMultiServer {
 				it_out.println(msg);
 
 			} catch (Exception e) {
-				System.out.println("¿¹¿Ü" + e);
+				System.out.println("ì˜ˆì™¸" + e);
 			}
 		}
 	}
 
 	public void sendAllMsg(String msg) {
 
-		// Ãâ·Â½ºÆ®¸²À» ¼øÂ÷ÀûÀ¸·Î ¾ò¾î¿Í¼­ ÇØ´ç ¸Ş½ÃÁö¸¦ Ãâ·ÂÇÑ´Ù.
+		// ì¶œë ¥ìŠ¤íŠ¸ë¦¼ì„ ìˆœì°¨ì ìœ¼ë¡œ ì–»ì–´ì™€ì„œ í•´ë‹¹ ë©”ì‹œì§€ë¥¼ ì¶œë ¥í•œë‹¤.
 		Iterator it = clientMap.keySet().iterator();
 
 		while (it.hasNext()) {
@@ -108,20 +108,20 @@ public class ChatMultiServer {
 				it_out.println(msg);
 
 			} catch (Exception e) {
-				System.out.println("¿¹¿Ü" + e);
+				System.out.println("ì˜ˆì™¸" + e);
 			}
 		}
 	}
 
 	public static void main(String[] args) {
-		// ¼­¹ö°´Ã¼ »ı¼º
+		// ì„œë²„ê°ì²´ ìƒì„±
 		ChatMultiServer ms = new ChatMultiServer();
 		ms.init();
 	}
 
 	/////////////
-	// ³»ºÎ Å¬·¡½º //
-	// Å¬¶óÀÌ¾ğÆ®·ÎºÎÅÍ ÀĞ¾î¿Â ¸Ş½ÃÁö¸¦ ´Ù¸¥ Å¬¶óÀÌ¾ğÆ®(socket)¿¡ º¸³»´Â ¿ªÇÒÀ» ÇÏ´Â ¸Ş¼­µå
+	// ë‚´ë¶€ í´ë˜ìŠ¤ //
+	// í´ë¼ì´ì–¸íŠ¸ë¡œë¶€í„° ì½ì–´ì˜¨ ë©”ì‹œì§€ë¥¼ ë‹¤ë¥¸ í´ë¼ì´ì–¸íŠ¸(socket)ì— ë³´ë‚´ëŠ” ì—­í• ì„ í•˜ëŠ” ë©”ì„œë“œ
 
 	class MultiServerT extends Thread {
 		Socket socket;
@@ -129,25 +129,25 @@ public class ChatMultiServer {
 		BufferedReader in = null;
 		String name = "";
 
-		// »ı¼ºÀÚ
+		// ìƒì„±ì
 		public MultiServerT(Socket socket) {
 			this.socket = socket;
 			try {
 				out = new PrintWriter(this.socket.getOutputStream(), true);
 				in = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));
 			} catch (Exception e) {
-				System.out.println("¿¹¿Ü:" + e);
+				System.out.println("ì˜ˆì™¸:" + e);
 			}
 		}
 
-		// Á¢¼ÓÀÚ list È®ÀÎ
+		// ì ‘ì†ì list í™•ì¸
 		public void ShowName(String name) {
 
 			{
 				Connection con = null;
 				PreparedStatement pstmt = null;
 				ResultSet rs = null;
-				String waitingroomlist = "´ë±â½Ç ¹æ ¸®½ºÆ®´Â [ ";
+				String waitingroomlist = "ëŒ€ê¸°ì‹¤ ë¦¬ìŠ¤íŠ¸ [ ";
 				
 				try {
 					con = ConnectionPool.getConnection();
@@ -177,18 +177,18 @@ public class ChatMultiServer {
 			}
 		}
 
-		// ¹æ¸¸µç °÷ ¸®½ºÆ® º¸±â (ÀÏ´ÜÀº ¹æÇÏ³ª¸¸ °ü¸®ÇÏ´Â Á¶°ÇÇÏ¿¡)
+		// ë°©ë§Œë“  ê³³ ë¦¬ìŠ¤íŠ¸ ë³´ê¸°(ì¼ë‹¨ì€ ë°©í•˜ë‚˜ë§Œ ê´€ë¦¬í•˜ëŠ” ì¡°ê±´í•˜ì—)
 		public void ShowName2(String name) {
 			Set<String> set = clientMap2.keySet();
 			PrintWriter pr = (PrintWriter) clientMap2.get(name);
 
-			pr.println("»ç¿ëÀÚ ¸®½ºÆ® [" + set + "]");
+			pr.println("ì‚¬ìš©ì ë¦¬ìŠ¤íŠ¸ [" + set + "]");
 		}
 
-		// ±Ó¼Ó¸»
+		// ê·“ì†ë§
 		public void ShowTalk(String s) {
 
-			System.out.println("±Ó¼Ó¸»½ÃÀÛ!!!!!!");
+			System.out.println("ê·“ì†ë§ì‹œì‘!!!!!!");
 
 			StringTokenizer t1 = new StringTokenizer(s);
 
@@ -208,15 +208,15 @@ public class ChatMultiServer {
 			strTmp2 = strTmp2.substring(nTmp2 + 1);
 
 			PrintWriter pr = (PrintWriter) clientMap.get(strTmp);
-			pr.println("[" + name + "]" + "´ÔÀÇ ±Ó¼Ó¸» :" + strTmp2);
+			pr.println("[" + name + "]" + "ë‹˜ì˜ ê·“ì†ë§ :" + strTmp2);
 		}
 
-		// ±Ó¼Ó¸» °íÁ¤
+		// ê·“ì†ë§ ê³ ì •
 		public void ShowOnlyTalk(String s, String name) {
 
 			String msg = "";
 
-			System.out.println("±Ó¼Ó¸»°íÁ¤½ÃÀÛ!!!!!!");
+			System.out.println("ê·“ì†ë§ê³ ì •ì‹œì‘!!!!!!");
 
 			StringTokenizer t1 = new StringTokenizer(s);
 			t1.nextToken();
@@ -237,11 +237,11 @@ public class ChatMultiServer {
 					PrintWriter pr = (PrintWriter) clientMap.get(strTmp);
 					
 					if (msg.equals("[" + name + "]" + " " + ":" + " " + "/bye")) {
-						pr.println("»ó´ë¹æÀÌ ±Ó¼Ó¸»À» ²÷¾ú½À´Ï´Ù.");
-						out.println("»ó´ë¹æÀÌ ±Ó¼Ó¸»À» ²÷¾ú½À´Ï´Ù.");
+						pr.println("ìƒëŒ€ë°©ì´ ê·“ì†ë§ì„ ëŠì—ˆìŠµë‹ˆë‹¤.");
+						out.println("ìƒëŒ€ë°©ì´ ê·“ì†ë§ì„ ëŠì—ˆìŠµë‹ˆë‹¤.");
 						break;
 					}
-					pr.println("[" + name + "]" + "´ÔÀÇ ±Ó¼Ó¸» :" + strTmp2);
+					pr.println("[" + name + "]" + "ë‹˜ì˜ ê·“ì†ë§ :" + strTmp2);
 				} catch (Exception e) {
 
 				}
@@ -265,10 +265,10 @@ public class ChatMultiServer {
 				try {
 					PrintWriter it_out = (PrintWriter) clientMap.get(it.next());
 					it_out.println("==============");
-					it_out.println("==°øÁö»çÇ×====> " + msg);
+					it_out.println("==ê³µì§€ì‚¬í•­====> " + msg);
 					it_out.println("==============");
 				} catch (Exception e) {
-					System.out.println("¿¹¿Ü" + e);
+					System.out.println("ì˜ˆì™¸" + e);
 				}
 			}
 			
@@ -276,17 +276,17 @@ public class ChatMultiServer {
 				try {
 					PrintWriter it_out2 = (PrintWriter) clientMap2.get(it2.next());
 					it_out2.println("==============");
-					it_out2.println("==°øÁö»çÇ×====> " + msg);
+					it_out2.println("==ê³µì§€ì‚¬í•­====> " + msg);
 					it_out2.println("==============");
 				} catch (Exception e) {
-					System.out.println("¿¹¿Ü" + e);
+					System.out.println("ì˜ˆì™¸" + e);
 				}
 			}
 		}
-//		// Áßº¹ÀÌ¸§ È®ÀÎ => DB¿¡¼­ Ã£¾Ò´Âµ¥ ´Ù½Ã ¸ø¹ŞÀ½ ºÎµéºÎµé
+//		// ì¤‘ë³µì´ë¦„ í™•ì¸ => DBì—ì„œ ì°¾ì•˜ëŠ”ë° ë‹¤ì‹œ ëª»ë°›ìŒ
 //		public void OverlapName(String name) {
 //			//////////////
-//			// Áßº¹ÀÌ¸§Ã¼Å©//
+//			// ì¤‘ë³µì´ë¦„ì²´í¬//
 //			/////////////
 //			Connection con = null;
 //			PreparedStatement pstmt = null;
@@ -304,10 +304,9 @@ public class ChatMultiServer {
 //					// System.out.print("id : " + rs.getString(1));
 //					if (rs.getString(1).equals(name)) {
 //						PrintWriter pr = (PrintWriter) clientMap.get(name);
-//						pr.println(name + "µ¿ÀÏ ID ÀÔ´Ï´Ù. »õ·Î¿î ¾ÆÀÌµğ¸¦ »ı¼ºÇØ¢a");
+//						pr.println(name + "ë™ì¼ ID ì…ë‹ˆë‹¤. ìƒˆë¡œìš´ ì•„ì´ë””ë¥¼ ìƒì„±í•´ì£¼ì„¸ìš”.");
 //						clientMap.remove(name);
 //
-//						// return; // ¾î¶»°Ô ÇØ¾ßµÇÁö ¿©±â¼­ ?!!!?!?!?!?!?!?!?!!?!?!?!?!?!?!?
 //					}
 //				}
 //			} catch (SQLException sqle) {
@@ -325,55 +324,8 @@ public class ChatMultiServer {
 //			}
 //		}
 
-//		// ºí·¢¸®½ºÆ® => DB¿¡¼­ Ã£¾Ò´Âµ¥ ´Ù½Ã ¸ø¹ŞÀ½ ºÎµéºÎµé
-//		public void BanPerson(String name) {
-//			//////////////////
-//			/// ºí·¢¸®½ºÆ® È®ÀÎ ///
-//			//////////////////
-//			Connection con = null;
-//			PreparedStatement pstmt = null;
-//			ResultSet rs = null;
-//
-//			try {
-//				con = ConnectionPool.getConnection();
-//
-//				String sql = "select * from Ban where player = " + name;
-//				pstmt = con.prepareStatement(sql);
-//				rs = pstmt.executeQuery();
-//				int count = 1;
-//				while (rs.next())
-//				{
-//					if(rs.getString(1).equals(name)) {
-//						count = 2;
-//					try {
-//						name = in.readLine();
-//						count = 1;
-//					} catch (Exception e) {
-//						System.out.println("1111");
-//						e.printStackTrace();
-//					}
-//					}
-//					else
-//					{
-//						break;
-//					}
-//				}
-//			} catch (SQLException sqle) {
-//				sqle.printStackTrace();
-//			} finally {
-//				try {
-//					if (rs != null)
-//						rs.close();
-//					if (pstmt != null)
-//						pstmt.close();
-//					if (con != null)
-//						con.close();
-//				} catch (Exception e) {
-//				}
-//			}
-//		}
 
-		// ´ëÈ­»ó´ë Â÷´Ü ¾ÆÁ÷ ¾ÈÇßÀ½
+		// ëŒ€í™” ìƒëŒ€ ì°¨ë‹¨ ì•„ì§ ì•ˆí•¨
 		public void BlockPerson(String s, String name) {
 
 			int nTmp2 = s.indexOf(" ");
@@ -382,22 +334,22 @@ public class ChatMultiServer {
 			strbp = strbp.substring(nTmp2 + 1, nTmp2 + 2);
 
 			PrintWriter pr = (PrintWriter) clientMap.get(strbp);
-			pr.println(name + "´Ô¿¡ ÀÇÇØ ³Ê Â÷´Ü´çÇÔ");
+			pr.println(name + "ë‹˜ì— ì˜í•´ ì°¨ë‹¨ë‹¹í•˜ì…¨ìŠµë‹ˆë‹¤.");
 
 		}
 
-		// »õ·Î¿î ¹æ ¸¸µé±â(°ø°³¹æ), (ºñ°ø°³¹æ)
+		// ìƒˆë¡œìš´ ë°© ë§Œë“¤ê¸°(ê³µê°œë°©), (ë¹„ê³µê°œë°©)
 		public void MakeRoom(String name) {
 
 			String rn = "";
 
-//			out.println("°ø°³(open)/ºñ°ø°³ ¼³Á¤(password)");
+//			out.println("ï¿½ï¿½ï¿½ï¿½(open)/ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(password)");
 			try {
 //				pr = in.readLine();
 //				if (pr.equals(name + "=>" + "password")) {
 //					PasswordRoom(name);
 //				}
-				out.println("¹æÁ¦¸ñÀ» ÀÔ·ÂÇÏ¼¼¿ä.");
+				out.println("ë°©ì œëª©ì„ ì…ë ¥í•˜ì„¸ìš”.");
 				rn = in.readLine();
 				
 				int nTmp = rn.indexOf(" ");
@@ -411,13 +363,13 @@ public class ChatMultiServer {
 				ResultSet rs = null;
 
 				clientMap.remove(name);
-				clientMap2.put(name, out); // ÇØ½¬¸Ê¿¡ Å°¸¦ nameÀ¸·Î Ãâ·Â½ºÆ®¸² °´Ã¼¸¦ ÀúÀå.
+				clientMap2.put(name, out); // í•´ì‰¬ë§µì— í‚¤ë¥¼ nameìœ¼ë¡œ ì¶œë ¥ìŠ¤íŠ¸ë¦¼ ê°ì²´ë¥¼ ì €ì¥
 
 				try {
 					con = ConnectionPool.getConnection();
 
-					System.out.println("¹æ ¸¸µé¾îÁ³À½!!!!");
-					out.println("¹æ ¸¸µé¾îÁ³À½!!!!");
+					System.out.println("ë°© ë§Œë“¤ì–´ì¡ŒìŒ!!!!");
+					out.println("ë°© ë§Œë“¤ì–´ì¡ŒìŒ!!!!");
 
 					String sql = "insert into MakeRoom values(?, ?)";
 					pstmt = con.prepareStatement(sql);
@@ -452,19 +404,19 @@ public class ChatMultiServer {
 					}
 				}
 			} catch (Exception e) {
-				System.out.println("¿¹¿Ü:" + e);
+				System.out.println("ì˜ˆì™¸:" + e);
 			}
 		}
 
-		// ¹æ ³ª°¡±â
+		// ë°© ë‚˜ê°€ê¸°
 		public void OutRoom(String name) {
 			
-			System.out.println(name + "´ÔÀÌ ¹æ¿¡¼­ ³ª°¡¼Ì½À´Ï´Ù.");
+			System.out.println(name + "ë‹˜ì´ ë°©ì—ì„œ ë‚˜ê°€ì…¨ìŠµë‹ˆë‹¤.");
 			clientMap2.remove(name);
 			clientMap.put(name, out);
 			
-			sendSomeMsg(name + "´ÔÀÌ ÅğÀåÇÏ¼Ì½À´Ï´Ù.");
-			System.out.println("ÇöÀç Á¢¼ÓÀÚ ¼ö´Â " + clientMap2.size() + "¸í ÀÔ´Ï´Ù.");
+			sendSomeMsg(name + "ë‹˜ì´ í‡´ì¥í•˜ì…¨ìŠµë‹ˆë‹¤.");
+			System.out.println("í˜„ì¬ ì ‘ì†ì ìˆ˜ëŠ” " + clientMap2.size() + "ëª… ì…ë‹ˆë‹¤.");
 
 			Connection con = null;
 			PreparedStatement pstmt = null;
@@ -480,7 +432,7 @@ public class ChatMultiServer {
 				// ----------------------------------------------------------------
 				sql = "insert into CHAT values(?, ?)";
 				pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, "´ë±â½Ç");
+				pstmt.setString(1, "ëŒ€ê¸°ì‹¤");
 				pstmt.setString(2, name);
 				pstmt.executeUpdate();
 
@@ -500,10 +452,10 @@ public class ChatMultiServer {
 			}
 		}
 
-		// ºñ°ø°³¹æ
+		// ë¹„ê³µê°œë°©
 		public void PasswordRoom(String name) {
 
-			out.println("ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇÏ½Ã¿À.");
+			out.println("ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì‹œì˜¤.");
 			String pw = "";
 			try {
 				pw = in.readLine();
@@ -516,21 +468,21 @@ public class ChatMultiServer {
 			ResultSet rs = null;
 
 			clientMap.remove(name);
-			clientMap2.put(name, out); // ÇØ½¬¸Ê¿¡ Å°¸¦ nameÀ¸·Î Ãâ·Â½ºÆ®¸² °´Ã¼¸¦ ÀúÀå.
+			clientMap2.put(name, out); // í•´ì‰¬ë§µì— í‚¤ë¥¼ nameìœ¼ë¡œ ì¶œë ¥ìŠ¤íŠ¸ë¦¼ ê°ì²´ë¥¼ ì €ì¥
 
 			try {
 				con = DriverManager.getConnection(
 						"jdbc:oracle:thin:@ec2-13-125-189-105.ap-northeast-2.compute.amazonaws.com:1521:xe", "scott",
 						"tiger");
 
-				// Å×ÀÌºí »ı¼º
+				// í…Œì´ë¸” ìƒì„±
 				String sql = "create table Room(id varchar2(10)" + "password varchar2(10))";
 
-				// DB¿¡ ¾÷µ¥ÀÌÆ®ÇÏ±â À§ÇÑ ÄÚµå
+				// DBì— ì—…ë°ì´íŠ¸í•˜ê¸° ìœ„í•œ ì½”ë“œ
 				pstmt = con.prepareStatement(sql);
 				int updateCount = pstmt.executeUpdate();
-				System.out.println("¹æ ¸¸µé¾îÁ³À½!!!!");
-				out.println("¹æ ¸¸µé¾îÁ³À½!!!!");
+				System.out.println("ë°©ë§Œë“¤ì–´ì¡ŒìŒ!!!!");
+				out.println("ë°© ë§Œë“¤ì–´ì¡ŒìŒ!!!!");
 
 				sql = "insert into Room values(?, ?)";
 				pstmt = con.prepareStatement(sql);
@@ -541,7 +493,7 @@ public class ChatMultiServer {
 				String s = "";
 
 				try {
-					// ÀÔ·Â½ºÆ®¸²ÀÌ nullÀÌ ¾Æ´Ï¸é ¹İº¹.
+					// ì…ë ¥ìŠ¤íŠ¸ë¦¼ì´ nullì´ ì•„ë‹ˆë©´ ë°˜ë³µ
 					while (in != null) {
 
 						s = in.readLine();
@@ -568,15 +520,15 @@ public class ChatMultiServer {
 					// System.out.println("Bye...");
 
 				} catch (Exception e) {
-					System.out.println("¿¹¿Ü:" + e);
+					System.out.println("ì˜ˆì™¸:" + e);
 				} finally {
 					System.out.println("8888888888888");
-					// ¿¹¿Ü°¡ ¹ß»ıÇÒ¶§ ÅğÀå ÇØ½¬¸Ê¿¡¼­ ÇØ´ç µ¥ÀÌÅÍ Á¦°Å.
-					// º¸Åë Á¾·áÇÏ°Å³ª ³ª°¡¸é java.net.SocketException: ¿¹¿Ü¹ß»ı
-					clientMap.put(name, out); // ´ë±â½Ç ÇØ½¬¸Ê¿¡ Å°¸¦ nameÀ¸·Î Ãâ·Â½ºÆ®¸² °´Ã¼¸¦ ÀúÀå.
+					// ì˜ˆì™¸ê°€ ë°œìƒí• ë•Œ í‡´ì¥ í•´ì‰¬ë§µì—ì„œ í•´ë‹¹ ë°ì´í„° ì œê±°
+					// ë³´í†µ ì¢…ë£Œí•˜ê±°ë‚˜ ë‚˜ê°€ë©´ java.net.SocketException: ì˜ˆì™¸ë°œìƒ
+					clientMap.put(name, out); // ëŒ€ê¸°ì‹¤ í•´ì‰¬ë§µì— í‚¤ë¥¼ nameìœ¼ë¡œ ì¶œë ¥ìŠ¤íŠ¸ë¦¼ ê°ì²´ ì €ì¥
 					clientMap2.remove(name);
-					sendSomeMsg(name + "´ÔÀÌ ÅğÀåÇÏ¼Ì½À´Ï´Ù.");
-					System.out.println("ÇöÀç Á¢¼ÓÀÚ ¼ö´Â " + clientMap2.size() + "¸í ÀÔ´Ï´Ù.");
+					sendSomeMsg(name + "ë‹˜ì´ í‡´ì¥í•˜ì…¨ìŠµë‹ˆë‹¤.");
+					System.out.println("í˜„ì¬ ì ‘ì†ì ìˆ˜ëŠ”" + clientMap2.size() + "ëª… ì…ë‹ˆë‹¤.");
 
 					try {
 						in.close();
@@ -603,14 +555,14 @@ public class ChatMultiServer {
 			}
 		}
 
-		// ¹æ¿¡ Á¢¼ÓÇØ¼­~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		// ë°©ì— ì ‘ì†í•´ì„œ
 		public void JoinRoom(String name) {
 			
 			String rn = "";
 			
 			try {
 
-				out.println("Á¢¼Ó ÇÒ ¹æÁ¦¸ñÀ» ÀÔ·ÂÇÏ¼¼¿ä.");
+				out.println("ì ‘ì† í•  ë°©ì œëª©ì„ ì…ë ¥í•˜ì„¸ìš”.");
 				rn = in.readLine();
 				
 				int nTmp = rn.indexOf(" ");
@@ -624,13 +576,13 @@ public class ChatMultiServer {
 				ResultSet rs = null;
 
 				clientMap.remove(name);
-				clientMap2.put(name, out); // ÇØ½¬¸Ê¿¡ Å°¸¦ nameÀ¸·Î Ãâ·Â½ºÆ®¸² °´Ã¼¸¦ ÀúÀå.
+				clientMap2.put(name, out); // í•´ì‰¬ë§µì— í‚¤ë¥¼ nameìœ¼ë¡œ ì¶œë ¥ìŠ¤íŠ¸ë¦¼ ê°ì²´ë¥¼ ì €ì¥
 
 				try {
 					con = ConnectionPool.getConnection();
 
-					System.out.println("¹æ µé¾î°¡ Á³À½!!!!");
-					out.println("¹æ µé¾î°¡Á³À½!!!!");
+					System.out.println("ë°©ì— ë“¤ì–´ê°!!!!");
+					out.println("ë°© ë“¤ì–´ê°!!!!");
 
 					String sql = "insert into MakeRoom values(?, ?)";
 					pstmt = con.prepareStatement(sql);
@@ -673,7 +625,7 @@ public class ChatMultiServer {
 					}
 				}
 			} catch (Exception e) {
-				System.out.println("¿¹¿Ü:" + e);
+				System.out.println("ï¿½ï¿½ï¿½ï¿½:" + e);
 			}
 		}
 
@@ -683,7 +635,7 @@ public class ChatMultiServer {
 				Connection con = null;
 				PreparedStatement pstmt = null;
 				ResultSet rs = null;
-				String roomlist = "ÀüÃ¼ ¹æ ¸®½ºÆ®´Â [ ";
+				String roomlist = "ë°© ë¦¬ìŠ¤íŠ¸ [ ";
 				
 				try {
 					con = ConnectionPool.getConnection();
@@ -713,26 +665,26 @@ public class ChatMultiServer {
 			}
 		}
 		
-		// ¾²·¹µå¸¦ »ç¿ëÇÏ±â À§ÇØ¼­ run()¸Ş¼­µå ÀçÁ¤ÀÇ
+		// ì“°ë ˆë“œë¥¼ ì‚¬ìš©í•˜ê¸° ìœ„í•´ì„œ run()ë©”ì„œë“œ ì¬ì •ì˜
 		@Override
 		public void run() {
 
 			String s = "";
 
 			try {
-				// Å¬¶óÀÌ¾ğÆ®¿¡¼­ Ã³À½À¸·Î º¸³»´Â ¸Ş½ÃÁö´Â
-				// Å¬¶óÀÌ¾ğÆ®°¡ »ç¿ëÇÒ ÀÌ¸§ÀÌ´Ù.
+				// í´ë¼ì´ì–¸íŠ¸ì—ì„œ ì²˜ìŒìœ¼ë¡œ ë³´ë‚´ëŠ” ë©”ì‹œì§€ëŠ”
+				// í´ë¼ì´ì–¸íŠ¸ê°€ ì‚¬ìš©í•  ì´ë¦„ì´ë‹¤.
 				name = in.readLine();
 
-//				BanPerson(name); // ºí·¢¸®½ºÆ® Ã¼Å©
+//				BanPerson(name); // ë¸”ë™ë¦¬ìŠ¤íŠ¸ ì²´í¬
 
-				// OverlapName(name); // Áßº¹ ÀÌ¸§ Ã¼Å©
+				// OverlapName(name); // ì¤‘ë³µ ì´ë¦„ ì²´í¬
 
-				clientMap.put(name, out); // ÇØ½¬¸Ê¿¡ Å°¸¦ nameÀ¸·Î Ãâ·Â½ºÆ®¸² °´Ã¼¸¦ ÀúÀå.
+				clientMap.put(name, out); // í•´ì‰¬ë§µì— í‚¤ë¥¼ nameìœ¼ë¡œ ì¶œë ¥ìŠ¤íŠ¸ë¦¼ ê°ì²´ë¥¼ ì €ì¥
 
-				sendAllMsg(name + "´ÔÀÌ ÀÔÀåÇÏ¼Ì½À´Ï´Ù."); // ÇöÀç °´Ã¼°¡ °¡Áö°í ÀÖ´Â ¼ÒÄÏÀ» Á¦¿ÜÇÏ°í ´Ù¸¥ ¼ÒÄÏ(Å¬¶óÀÌ¾ğÆ®)µé¿¡°Ô Á¢¼ÓÀ» ¾Ë¸².
+				sendAllMsg(name + "ë‹˜ì´ ì…ì¥í•˜ì…¨ìŠµë‹ˆë‹¤."); // í˜„ì¬ ê°ì²´ê°€ ê°€ì§€ê³  ìˆëŠ” ì†Œì¼“ì„ ì œì™¸í•˜ê³  ë‹¤ë¥¸ ì†Œì¼“(í´ë¼ì´ì–¸íŠ¸)ë“¤ì—ê²Œ ì ‘ì†ì„ ì•Œë¦¼.
 
-				System.out.println("ÇöÀç Á¢¼ÓÀÚ ¼ö´Â " + clientMap.size() + "¸í ÀÔ´Ï´Ù.");
+				System.out.println("í˜„ì¬ ì ‘ì†ì ìˆ˜ëŠ” " + clientMap.size() + "ëª… ì…ë‹ˆë‹¤.");
 
 				Connection con = null;
 				PreparedStatement pstmt = null;
@@ -741,7 +693,7 @@ public class ChatMultiServer {
 				try {					
 					String sql = "insert into CHAT values(?, ?)";
 					pstmt = con.prepareStatement(sql);
-					pstmt.setString(1, "´ë±â½Ç");
+					pstmt.setString(1, "ëŒ€ê¸°ì‹¤");
 					pstmt.setString(2, name);
 					pstmt.executeUpdate();
 
@@ -757,7 +709,7 @@ public class ChatMultiServer {
 					} catch (SQLException sqle) {
 					}
 				}
-				// ÀÔ·Â½ºÆ®¸²ÀÌ nullÀÌ ¾Æ´Ï¸é ¹İº¹.
+				// ì…ë ¥ìŠ¤íŠ¸ë¦¼ì´ nullì´ ì•„ë‹ˆë©´ ë°˜ë³µ.
 				while (in != null) {
 
 					s = in.readLine();
@@ -767,7 +719,7 @@ public class ChatMultiServer {
 						MakeRoom(name);
 						
 						try {
-							// ÀÔ·Â½ºÆ®¸²ÀÌ nullÀÌ ¾Æ´Ï¸é ¹İº¹.
+							// ì…ë ¥ìŠ¤íŠ¸ë¦¼ì´ nullì´ ì•„ë‹ˆë©´ ë°˜ë³µ.
 							while (in != null) {
 
 								s = in.readLine();
@@ -793,14 +745,14 @@ public class ChatMultiServer {
 								}
 							}
 						} catch (Exception e) {
-							System.out.println("¿¹¿Ü:" + e);
+							System.out.println("ì˜ˆì™¸:" + e);
 						}
 						
 					} else if (s.equals("[" + name + "]" + " " + ":" + " " + "/join")) {
 						JoinRoom(name);
 						
 						try {
-							// ÀÔ·Â½ºÆ®¸²ÀÌ nullÀÌ ¾Æ´Ï¸é ¹İº¹.
+							// ì…ë ¥ìŠ¤íŠ¸ë¦¼ì´ nullì´ ì•„ë‹ˆë©´ ë°˜ë³µ.
 							while (in != null) {
 
 								s = in.readLine();
@@ -826,7 +778,7 @@ public class ChatMultiServer {
 								}
 							}
 						} catch (Exception e) {
-							System.out.println("¿¹¿Ü:" + e);
+							System.out.println("ì˜ˆì™¸:" + e);
 						}
 					} else if (s.equals("[" + name + "]" + " " + ":" + " " + "/list")) {
 						ShowName(name);
@@ -851,14 +803,14 @@ public class ChatMultiServer {
 				// System.out.println("Bye...");
 
 			} catch (Exception e) {
-				System.out.println("¿¹¿Ü:" + e);
+				System.out.println("ì˜ˆì™¸:" + e);
 			} finally {
 				System.out.println("7777777777777");
-				// ¿¹¿Ü°¡ ¹ß»ıÇÒ¶§ ÅğÀå ÇØ½¬¸Ê¿¡¼­ ÇØ´ç µ¥ÀÌÅÍ Á¦°Å.
-				// º¸Åë Á¾·áÇÏ°Å³ª ³ª°¡¸é java.net.SocketException: ¿¹¿Ü¹ß»ı
+				// ì˜ˆì™¸ê°€ ë°œìƒí• ë•Œ í‡´ì¥ í•´ì‰¬ë§µì—ì„œ í•´ë‹¹ ë°ì´í„° ì œê±°.
+				// ë³´í†µ ì¢…ë£Œí•˜ê±°ë‚˜ ë‚˜ê°€ë©´ java.net.SocketException: ì˜ˆì™¸ë°œìƒ
 				clientMap.remove(name);
-				sendAllMsg(name + "´ÔÀÌ ÅğÀåÇÏ¼Ì½À´Ï´Ù.");
-				System.out.println("ÇöÀç Á¢¼ÓÀÚ ¼ö´Â " + clientMap.size() + "¸í ÀÔ´Ï´Ù.");
+				sendAllMsg(name + "ë‹˜ì´ í‡´ì¥í•˜ì…¨ìŠµë‹ˆë‹¤.");
+				System.out.println("í˜„ì¬ ì ‘ì†ì ìˆ˜ëŠ” " + clientMap.size() + "ëª… ì…ë‹ˆë‹¤.");
 
 				try {
 					in.close();

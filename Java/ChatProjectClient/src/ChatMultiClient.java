@@ -1,6 +1,6 @@
 
 /*
- * ÄÜ¼Ö ¸ÖÆ¼Ã¤ÆÃ Å¬¶óÀÌ¾ğÆ® ÇÁ·Î±×·¥
+ * ì½˜ì†” ë©€í‹°ì±„íŒ… í´ë¼ì´ì–¸íŠ¸ í”„ë¡œê·¸ë¨
  */
 import java.io.*;
 import java.net.*;
@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class ChatMultiClient {
 
 	public static void main(String[] args) throws UnknownHostException, IOException {
-		System.out.println("ÀÌ¸§À» ÀÔ·ÂÇØ ÁÖ¼¼¿ä.");
+		System.out.println("ì´ë¦„ì„ ì…ë ¥í•´ ì£¼ì„¸ìš”.");
 		Scanner s = new Scanner(System.in);
 		String s_name = s.nextLine();
 
@@ -18,10 +18,10 @@ public class ChatMultiClient {
 		try {
 			String ServerIP = "192.168.0.105";
 			// String ServerIP = args[0];
-			Socket socket = new Socket(ServerIP, 9999); // ¼ÒÄÏ °´Ã¼ »ı¼º
-			System.out.println("¼­¹ö¿Í ¿¬°áÀÌ µÇ¾ú½À´Ï´Ù.......");
+			Socket socket = new Socket(ServerIP, 9999); // ì†Œì¼“ ê°ì²´ ìƒì„±
+			System.out.println("ì„œë²„ì™€ ì—°ê²°ì´ ë˜ì—ˆìŠµë‹ˆë‹¤.......");
 
-			// ¼­¹ö¿¡¼­ º¸³»´Â ¸Ş½ÃÁö¸¦ »ç¿ëÀÚÀÇ ÄÜ¼Ö¿¡ Ãâ·ÂÇÏ´Â ¾²·¹µå.
+			// ì„œë²„ì—ì„œ ë³´ë‚´ëŠ” ë©”ì‹œì§€ë¥¼ ì‚¬ìš©ìì˜ ì½˜ì†”ì— ì¶œë ¥í•˜ëŠ” ì“°ë ˆë“œ.
 			Thread receiver = new ChatReceiver(socket);
 			receiver.start();
 
@@ -29,7 +29,7 @@ public class ChatMultiClient {
 			sender.start();
 
 		} catch (Exception e) {
-			System.out.println("¿¹¿Ü[MultiClient class]:" + e);
+			System.out.println("ï¿½ï¿½ï¿½ï¿½[MultiClient class]:" + e);
 		}
 	}
 }
