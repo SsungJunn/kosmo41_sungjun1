@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>XMLHttpRequest</title>
+</head>
+<meta charset="UTF-8">
+<body>
+	<script>	
+	// XMLHttpRequest 객체를 생성하는 함수
+	function createRequest() {
+		try {
+			return new XMLHttpRequest();
+		} catch (exception) {
+			var versions = [
+					'Msxml2.XMLHTTP.6.0',
+					'Msxml2.XMLHTTP.5.0',
+					'Msxml2.XMLHTTP.4.0',
+					'Msxml2.XMLHTTP.3.0',
+					'Msxml2.XMLHTTP',
+					'Microsoft.XMLHttp'
+			];
+			for (var i = 0; i < versions.length; i++) {
+				try {
+					return new ActiveXObject(versions[i]);
+				} catch (e) { }
+			}
+		}
+	}
+	
+	// XMLHttpRequest 객체를 생성
+	var request = createRequest();
+	request.open('GET', '/jquery/data.html', false);
+	
+	// send() 메서드에 소비되는 시간 측정
+	var prevDate = new Date();
+	request.send();
+	var nowDate = new Date();
+	
+	// 출력
+	alert(nowDate - prevDate);
+	</script>
+</body>
+</html>

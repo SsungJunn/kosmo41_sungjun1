@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src ="http://code.jquery.com/jquery.js"></script>
+	<script>
+		$(document).ready(function () {
+			$('tr:eq(0)').css('background', '#000000').css('color', 'White');
+			$('td:nth-child(3n+1)').css('background', '#565656');
+			$('td:nth-child(3n+2)').css('background', 'yellow');
+			$('td:nth-child(3n)').css('background', '#F9F9F9');
+		});	
+	</script>
+</head>
+<body>
+	<table>
+		<tr><th>이름</th><th>혈액형</th><th>지역</th></tr>
+		<tr><td>현승</td><td>AB형</td><td>부천</td></tr>
+		<tr><td>동인</td><td>AB형</td><td>동인천</td></tr>
+		<tr><td>지훈</td><td>AB형</td><td>구로</td></tr>
+		<tr><td>태용</td><td>AB형</td><td>부천</td></tr>
+		<tr><td>재엽</td><td>AB형</td><td>어디더라</td></tr>
+		<tr><td>희승</td><td>AB형</td><td>인천</td></tr>
+	</table>
+</body>
+</html>

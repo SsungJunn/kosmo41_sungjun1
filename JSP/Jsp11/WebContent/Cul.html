@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JSP/Servlet Quiz</title>
+</head>
+<body>
+	<form action="calc.jsp" method="post">
+		첫번째 수 : <input type="text" name="num1" size="10"><br/>
+		두번째 수 : <input type="text" name="num2" size="10"><br/>
+		
+		계산 <input type="radio" name="cul" value="덧셈">더하기
+		<input type="radio" name="cul" value="뺄셈" checked="checked">빼기
+		<input type="radio" name="cul" value="곱셈">곱하기
+		<input type="radio" name="cul" value="나눗셈">나누기<br/>
+
+		<input type="submit" value="전송"><input type="reset" value="초기화">
+	</form>
+</body>
+</html>
